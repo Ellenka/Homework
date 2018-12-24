@@ -3,7 +3,7 @@ package academy.mate.homework3;
 import java.util.Scanner;
 
 public class LessonThreeHomework {
-  public static void main(String[] args) {
+  public void first() {
     Scanner scan = new Scanner(System.in);
     String full = scan.nextLine();
     String last = full.substring(0, full.indexOf(' '));
@@ -13,8 +13,9 @@ public class LessonThreeHomework {
     //String fullone = full.trim();
     System.out.println(last.substring(0,1).toUpperCase() + last.substring(1) + " "+left.substring(0,1).toUpperCase()+". "+patronymic.substring(0,1).toUpperCase()+".");
     scan.close();
+  }
 //////////////////////////////////////////////////////////////////////////
-
+public void cased() {
 double value = 343;
 int discount;
 switch((int)(value/100)) {
