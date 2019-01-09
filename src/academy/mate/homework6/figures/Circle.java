@@ -4,7 +4,7 @@ public class Circle {
   private String name;
   private String color;
   private double perimeter;
-  private double square;
+  private double area;
   
   private double radius;
 
@@ -26,14 +26,14 @@ public class Circle {
     return perimeter;
   }
   
-  double getSquare () {
-    square = Math.PI*Math.pow(radius, 2);
-    return square;
+  double getArea () {
+    area = Math.PI*Math.pow(radius, 2);
+    return area;
   }
   
   void getInfo() {
     System.out.println("The figure is: "+ getName()+", its perimeter is: "+getPerimeter()+
-        ", its square is: "+getSquare());
+        ", its square is: "+getArea());
   }
   
 

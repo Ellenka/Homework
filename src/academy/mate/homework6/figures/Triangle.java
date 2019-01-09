@@ -4,7 +4,7 @@ public class Triangle {
   private String name;
   private String color;
   private double perimeter;
-  private double square;
+  private double area;
   
   private double a;
   private double b;
@@ -27,14 +27,14 @@ public class Triangle {
     return perimeter;
   }
   
-  double getSquare () {
-    square = Math.sqrt(perimeter*(perimeter-a)*(perimeter-b)*(perimeter-c));
-    return square;
+  double getArea () {
+    area = Math.sqrt(perimeter*(perimeter-a)*(perimeter-b)*(perimeter-c));
+    return area;
   }
   
   void getInfo() {
     System.out.println("The figure is: "+ getName()+", its perimeter is: "+getPerimeter()+
-        ", its square is: "+getSquare());
+        ", its square is: "+getArea());
   }
 
 }
