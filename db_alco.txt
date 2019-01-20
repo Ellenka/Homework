@@ -1,0 +1,128 @@
+
+mysql> CREATE DATABASE ALCO;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| alco               |
+| mateacademy        |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| tetris             |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> USE ALCO;
+Database changed
+mysql> CREATE TABLE category (cat_id  INT PRIMARY KEY CHECK (cat_id>=0 AND cat_id<128), cat_name VARCHAR (100));
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> DESCRIBE category;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| cat_id   | int(11)      | NO   | PRI | NULL    |       |
+| cat_name | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+2 rows in set (0.03 sec)
+
+
+mysql> CREATE TABLE drinks (d_id INT PRIMARY KEY, d_name VARCHAR (255) NOT NULL, d_degree INT CHECK (d_degree >=0 AND d_degree<128), d_category INT, d_volume DECIMAL (5,2), FOREIGN KEY (d_category) REFERENCES  category (cat_id));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> DESCRIBE drinks;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| d_id       | int(11)      | NO   | PRI | NULL    |       |
+| d_name     | varchar(255) | NO   |     | NULL    |       |
+| d_degree   | int(11)      | YES  |     | NULL    |       |
+| d_category | int(11)      | YES  | MUL | NULL    |       |
+| d_volume   | decimal(5,2) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.03 sec)
+
+mysql> INSERT INTO category VALUES (1, 'soft drinks');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO category VALUES (2, 'wine');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO category VALUES (3, 'beer');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO category VALUES (4, 'vodka');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO category VALUES (5, 'shot');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM category;
++--------+-------------+
+| cat_id | cat_name    |
++--------+-------------+
+|      1 | soft drinks |
+|      2 | wine        |
+|      3 | beer        |
+|      4 | vodka       |
+|      5 | shot        |
++--------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO drinks VALUES (1, 'Corona', 5, 3, 0.33);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO drinks VALUES (2, 'Green Mexican', 21, 5, 0.06);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO drinks VALUES (3, 'Fanta', 0, 1,1.00);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO drinks VALUES (4, 'Pepsi', 0, 1,2.00);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO drinks VALUES (5, 'Finlandia',40, 4,0.7);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO drinks VALUES (6, 'Riesling', 7,2,0.75);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO drinks VALUES (7, 'Lemon Drop', 17, 5, 0.06);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO drinks VALUES (8, 'Riesling', 7,2,0.75);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO drinks VALUES (9, 'Stella Artois', 5, 3, 1.00);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT *FROM drinks;
++------+---------------+----------+------------+----------+
+| d_id | d_name        | d_degree | d_category | d_volume |
++------+---------------+----------+------------+----------+
+|    1 | Corona        |        5 |          3 |     0.33 |
+|    2 | Green Mexican |       21 |          5 |     0.06 |
+|    3 | Fanta         |        0 |          1 |     1.00 |
+|    4 | Pepsi         |        0 |          1 |     2.00 |
+|    5 | Finlandia     |       40 |          4 |     0.70 |
+|    6 | Riesling      |        7 |          2 |     0.75 |
+|    7 | Lemon Drop    |       17 |          5 |     0.06 |
+|    8 | Riesling      |        7 |          2 |     0.75 |
+|    9 | Stella Artois |        5 |          3 |     1.00 |
++------+---------------+----------+------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_alco |
++----------------+
+| category       |
+| drinks         |
++----------------+
+2 rows in set (0.03 sec)
+
+mysql>
